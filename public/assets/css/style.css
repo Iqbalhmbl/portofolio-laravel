@@ -1,0 +1,106 @@
+/* Ornamen SVG bergerak di hero */
+.hero-ornamen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.floating-ornamen {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  animation: floatY 6s ease-in-out infinite alternate, floatX 8s ease-in-out infinite alternate;
+}
+.floating-ornamen.delay-1 {
+  top: 60%;
+  left: 70%;
+  animation-delay: 2s, 1s;
+}
+.floating-ornamen.delay-2 {
+  top: 30%;
+  left: 80%;
+  animation-delay: 1s, 3s;
+}
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(30px); }
+}
+@keyframes floatX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(20px); }
+}
+/* Pastikan konten hero di atas ornamen */
+#hero > h1, #hero > p, #hero > div {
+  position: relative;
+  z-index: 1;
+}
+body {
+  background: #111;
+  color: #f8f9fa;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background: #111 !important;
+  border-bottom: 1px solid #444;
+}
+
+.btn-success {
+  background-color: #32f08c;
+  border-color: #32f08c;
+  color: #111;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #28c76f;
+  border-color: #28c76f;
+  color: #fff;
+}
+
+.badge.bg-success {
+  background-color: #32f08c !important;
+  color: #111;
+}
+
+.badge.bg-secondary {
+  background-color: #444 !important;
+  color: #fff;
+}
+
+.card {
+  background: #181818;
+  border: 1px solid #444;
+  color: #f8f9fa;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(50, 240, 140, 0.1);
+}
+
+.form-control:focus {
+  border-color: #32f08c;
+  box-shadow: 0 0 0 0.2rem rgba(50,240,140,.25);
+}
+
+.btn-link.text-success {
+  color: #32f08c !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #222;
+}
+::-webkit-scrollbar-thumb {
+  background: #32f08c;
+}
+
+img, .card-img-top {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#projects-grid .card {
+  min-height: 100%;
+}

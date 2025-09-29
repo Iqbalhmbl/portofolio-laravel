@@ -1,0 +1,24 @@
+/* Drag-and-Drop Area Styles */
+.drag-and-drop {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #aaa;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.drag-and-drop.dragover {
+    background-color: #f9f9f9;
+    border-color: #333;
+    color: #333;
+}
+
+.drag-and-drop p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.drag-and-drop input[type="file"] {
+    display: none;
+}
