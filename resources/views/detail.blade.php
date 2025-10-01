@@ -50,7 +50,7 @@
               <div class="text-center mb-5">
                 <h1 class="display-4 fw-bold text-success mb-3">{{ $project->title }}</h1>
                 <div class="mx-auto">
-                    <p class="lead text-light fs-5 text-start">{{ $project->description }}</p>
+                    <p class="lead text-light fs-5 text-start">{!! $project->description !!}</p>
                 </div>
               </div>
             </div>
