@@ -36,7 +36,7 @@
                         style="height: 300px; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
                         <i class="bi bi-image fs-1 mb-3 opacity-50"></i>
                         <h1 class="display-5 fw-bold mb-2">{{ $project->title }}</h1>
-                        <p class="lead">{{ $project->description }}</p>
+                        <p class="lead">{!! $project->description !!}</p>
                     </div>
                 @endif
             </div>

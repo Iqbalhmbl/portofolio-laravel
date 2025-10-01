@@ -73,7 +73,7 @@
         @endif
         <div class="card-body d-flex flex-column">
             <h5 class="card-title text-success">{{ $project->title }}</h5>
-            <p class="card-text">{{ Str::limit($project->description, 100) }}</p>
+            <p class="card-text">{!! Str::limit($project->description, 100) !!}</p>
             <div class="mb-3">
                 @foreach($project->tech_stack_skills as $tech_skill)
                     @php
