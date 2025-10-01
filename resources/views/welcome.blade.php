@@ -7,7 +7,8 @@
       <!-- Logo -->
       <img src="{{ asset('assets/img/iqbal_hambali_logo_transparent.png') }}" alt="Logo IH" width="80" height="80" class="mb-3 rounded-circle shadow" style="background: #222;">
       <!-- Hero Content -->
-      <h1 class="display-4 fw-bold text-success mb-2">Hi, I’m Iqbal Hambali</h1>
+      <h1 class="display-4 fw-bold text-success mb-2 text-center">Hi, I’m Iqbal Hambali</h1>
+
       <p class="lead mb-4">Full-Stack Developer</p>
       <div class="d-flex gap-4 mb-3">
           <a href="https://instagram.com/iqbalhmbl" target="_blank" class="text-success" aria-label="Instagram">
