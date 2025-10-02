@@ -1,6 +1,49 @@
 @extends('layouts.front')
 
 @section('content')
+<style>
+/* Grid 1–2–3 kolom (opsional kalau sudah pakai row-cols) */
+#work .project-grid { row-gap: 1.5rem; }
+
+/* Card konsisten */
+.project-card{
+  display:flex; flex-direction:column; height:100%;
+  background:#0d0f10; border:1px solid #3a3a3a; color:#eaeaea;
+  border-radius:14px; overflow:hidden;
+}
+.project-card:hover{ transform:translateY(-2px); transition:.2s ease; }
+
+/* Gambar konsisten */
+.project-img{
+  width:100%; height:220px; object-fit:cover; display:block;
+}
+
+/* Body fleksibel */
+.project-body{ display:flex; flex-direction:column; gap:.5rem; padding:1rem; }
+
+/* Judul & deskripsi ter-clamp agar tinggi seragam */
+.project-title{
+  color:#32f08c; font-weight:700; margin:0 0 .25rem 0;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.project-desc{
+  margin:0;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+
+/* Badge wrap rapi, batas tinggi 2 baris agar tidak “mendorong” card */
+.project-badges{
+  display:flex; flex-wrap:wrap; gap:.4rem .5rem;
+  max-height:3.2rem; overflow:hidden;
+}
+
+/* Tombol selalu di bawah */
+.project-actions{ margin-top:auto; display:flex; gap:.5rem; }
+
+/* Perbaiki badge radius agar konsisten */
+.badge{ border-radius:999px; font-weight:600; }
+</style>
+
 <!-- Hero -->
   <section class="min-vh-50 d-flex flex-column justify-content-center align-items-center py-5 position-relative overflow-hidden" id="hero">
       <!-- Logo -->
@@ -56,51 +99,48 @@
     </div>
   </section>
 
-  <!-- Work (Projects) -->
-  <section class="container py-5" id="work">
-    <h2 class="fw-bold mb-4">Projects</h2>
-    <div class="row g-4">
-@foreach($projects as $project)
-<div class="col-12 col-md-6 col-lg-4">
-    <div class="card h-100 bg-black border-secondary text-light d-flex flex-column">
-        @if($project->files && $project->files->count() > 0)
-            <img src="{{ asset($project->files->first()->file_path) }}" 
-                 class="card-img-top" 
-                 alt="{{ $project->title }}" 
-                 style="height: 200px; object-fit: cover; width:100%;">
-        @else
-            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" 
-                 style="height: 200px; width:100%;">
-                <span class="text-muted">No Image</span>
-            </div>
-        @endif
+<section class="container py-5" id="work">
+  <h2 class="fw-bold mb-4">Projects</h2>
 
-        <div class="card-body d-flex flex-column" style="min-height: 250px;">
-            <h5 class="card-title text-success">{{ $project->title }}</h5>
-            <p class="card-text">{!! Str::limit($project->description, 70) !!}</p>
-            
-            <div class="mb-3">
-                @foreach($project->tech_stack_skills as $tech_skill)
-                    @php
-                        $colors = ['primary', 'success', 'danger', 'warning', 'info', 'secondary', 'dark'];
-                        $color = $colors[$loop->index % count($colors)];
-                    @endphp
-                    <span class="badge bg-{{ $color }} me-1 mb-1">{{ $tech_skill->name }}</span>
-                @endforeach
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 project-grid">
+    @foreach($projects as $project)
+      <div class="col">
+        <div class="project-card card">
+          @if($project->files && $project->files->count() > 0)
+            <img src="{{ asset($project->files->first()->file_path) }}"
+                 alt="{{ $project->title }}"
+                 class="project-img card-img-top">
+          @else
+            <div class="project-img d-flex align-items-center justify-content-center bg-secondary">
+              <span class="text-dark fw-semibold">No Image</span>
             </div>
-            
-            <!-- Tombol selalu di bawah -->
-            <div class="mt-auto d-flex gap-2">
-                <a href="{{ route('detail', $project->id) }}" class="btn btn-outline-light btn-sm">Detail</a>
+          @endif
+
+          <div class="project-body card-body">
+            <h5 class="project-title card-title">{{ $project->title }}</h5>
+            <p class="project-desc card-text">{!! Str::limit(strip_tags($project->description), 160) !!}</p>
+
+            <div class="project-badges">
+              @foreach($project->tech_stack_skills as $tech_skill)
+                @php
+                  $colors = ['primary','success','danger','warning','info','secondary','dark'];
+                  $color = $colors[$loop->index % count($colors)];
+                @endphp
+                <span class="badge bg-{{ $color }}">{{ $tech_skill->name }}</span>
+              @endforeach
             </div>
+
+            <div class="project-actions">
+              <a href="{{ route('detail', $project->id) }}" class="btn btn-outline-light btn-sm">Detail</a>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-@endforeach
+      </div>
+    @endforeach
+  </div>
+</section>
 
 
-    </div>
-  </section>
   <!-- Experience -->
 <section class="container py-5" id="experience">
     <div class="row align-items-start">
