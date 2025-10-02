@@ -7,7 +7,7 @@
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('welcome') }}">
             <img src="{{ asset('assets/img/iqbal_hambali_logo_transparent.png') }}" alt="Logo IH" width="32" height="32">
-            <span class="fw-bold">Project Detail ({{ $project->title }})</span>
+            <span class="fw-bold">{{ $project->title }}</span>
         </a>
         <div class="d-flex">
             <a href="{{ route('welcome') }}" class="btn btn-outline-success">← Back</a>
