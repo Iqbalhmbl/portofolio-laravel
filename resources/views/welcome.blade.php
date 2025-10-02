@@ -147,21 +147,31 @@
         <!-- Left Column: Title & Description -->
         <div class="col-md-5 mb-4 mb-md-0">
             <h2 class="fw-bold text-white mb-3">Experience</h2>
-        <p class="fs-6">
-            Here are some of my work experiences and projects as a developer and project manager. Each experience has provided new insights and skills that strengthen my abilities in the tech industry.
-        </p>
+            <p class="fs-6">
+                Here are some of my work experiences and projects as a developer and project manager. Each experience has provided new insights and skills that strengthen my abilities in the tech industry.
+            </p>
         </div>
+
         <!-- Right Column: Scrollable Experience Cards -->
         <div class="col-md-7">
             <div style="max-height: 350px; overflow-y: auto;">
                 @foreach($experiences as $exp)
                 <div class="card bg-black border-secondary mb-3 shadow-sm">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <h5 class="card-title text-success mb-0">{{ $exp->title }}</h5>
-                            <span class="badge bg-success text-dark">{{ $exp->company }}</span>
+                        <!-- Title + Company -->
+                        <div class="mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title text-success mb-0">{{ $exp->title }}</h5>
+                                <!-- Badge hanya tampil di desktop -->
+                                <span class="badge bg-success text-dark d-none d-md-inline">{{ $exp->company }}</span>
+                            </div>
+                            <!-- Badge tampil di mobile, di bawah title -->
+                            <span class="badge bg-success text-dark d-md-none mt-1">{{ $exp->company }}</span>
                         </div>
-                        <small class="text-success d-block mb-2">{{ $exp->start_date }} - {{ $exp->end_date ?? "Present" }}</small>
+
+                        <small class="text-success d-block mb-2">
+                            {{ $exp->start_date }} - {{ $exp->end_date ?? "Present" }}
+                        </small>
                         <p class="mt-2 mb-0">{!! $exp->description !!}</p>
                     </div>
                 </div>
@@ -171,13 +181,14 @@
     </div>
 </section>
 
+
   <!-- Contact -->
   <section class="container py-5" id="contact">
     <h2 class="fw-bold mb-4">Contact</h2>
     <div class="row">
       <div class="col-md-6 mb-4 mb-md-0">
         <ul class="list-unstyled">
-          <li><i class="bi bi-geo-alt-fill me-2" aria-label="Location"></i> Sukorejo, 71A, Sidoarjo, Indonesia</li>
+          <li><i class="bi bi-geo-alt-fill me-2" aria-label="Location"></i>Sidoarjo, Indonesia</li>
           <li><i class="bi bi-envelope-fill me-2" aria-label="Email"></i> iqbalhmbl505@gmail.com</li>
           <li><i class="bi bi-telephone-fill me-2" aria-label="Phone"></i> +62 878 2873 6448</li>
         </ul>

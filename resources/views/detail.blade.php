@@ -1,19 +1,34 @@
 @extends('layouts.front')
 
 @section('content')
+<style>
+    .navbar .project-title {
+  max-width: 160px;          /* batas lebar pada layar kecil */
+  white-space: nowrap;       /* biar tetap satu baris */
+  overflow: hidden;          /* sembunyikan teks yang kepanjangan */
+  text-overflow: ellipsis;   /* kasih ... di akhir */
+}
 
+@media (min-width: 768px) {
+  .navbar .project-title {
+    max-width: 400px; /* di layar lebih besar boleh lebih panjang */
+  }
+}
+
+</style>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-black">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('welcome') }}">
             <img src="{{ asset('assets/img/iqbal_hambali_logo_transparent.png') }}" alt="Logo IH" width="32" height="32">
-            <span class="fw-bold">{{ $project->title }}</span>
+            <span class="fw-bold project-title">{{ $project->title }}</span>
         </a>
         <div class="d-flex">
             <a href="{{ route('welcome') }}" class="btn btn-outline-success">← Back</a>
         </div>
     </div>
 </nav>
+
 
 <!-- Project Detail -->
 <div class="container py-5">
